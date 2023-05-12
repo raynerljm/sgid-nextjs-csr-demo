@@ -16,10 +16,10 @@ const Home: NextPage = () => {
       <div className="bg-white rounded-md py-12 px-8 flex flex-col max-w-lg">
         <div className="flex gap-12 w-4/5 mx-auto mb-8">
           <div className="w-full grid place-items-center">
-            <Image src="/logo.png" alt="sgID logo" />
+            <Image src={sgidLogo} alt="sgID logo" />
           </div>
           <div className="w-full grid place-items-center">
-            <Image src="/singpass.svg" alt="Singpass logo" />
+            <Image src={singpassLogo} alt="Singpass logo" />
           </div>
         </div>
         <h2 className="font-medium mb-1">Favourite ice cream flavour</h2>
