@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
-import sgidLogo from "../public/logo.png";
-import singpassLogo from "../public/singpass.svg";
+import sgidLogo from "../../public/logo.png";
+import singpassLogo from "../../public/singpass.svg";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -15,11 +15,11 @@ const Home: NextPage = () => {
     <main className="h-screen grid place-items-center">
       <div className="bg-white rounded-md py-12 px-8 flex flex-col max-w-lg">
         <div className="flex gap-12 w-4/5 mx-auto mb-8">
-          <div className="w-full grid place-items-center">
-            <Image src="/logo.png" alt="sgID logo" />
+          <div className="w-full grid place-items-">
+            <Image src={sgidLogo} alt="sgID logo" />
           </div>
-          <div className="w-full grid place-items-center">
-            <Image src="/singpass.svg" alt="Singpass logo" />
+          <div className="w-full grid place-items-center relative">
+            <Image src={singpassLogo} alt="Singpass logo" />
           </div>
         </div>
         <h2 className="font-medium mb-1">Favourite ice cream flavour</h2>

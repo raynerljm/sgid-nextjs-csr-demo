@@ -4,10 +4,10 @@ const sgidClient = new SgidClient({
   clientId: String(process.env.SGID_CLIENT_ID) || "",
   clientSecret: String(process.env.SGID_CLIENT_SECRET) || "",
   privateKey: String(process.env.SGID_PRIVATE_KEY).replace(/\\n/g, "\n") || "",
-  // redirectUri: "https://sgid-nextjs-csr-demo.vercel.app/api/callback",
-
-  // For local development
-  redirectUri: "http://localhost:3000/api/callback",
+  redirectUri:
+    process.env.NODE_ENV === "production"
+      ? "https://sgid-nextjs-csr-demo.vercel.app/api/callback"
+      : "http://localhost:3000/api/callback",
 });
 
 export { sgidClient };
