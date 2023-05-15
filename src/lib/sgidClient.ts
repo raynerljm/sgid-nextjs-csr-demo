@@ -8,6 +8,7 @@ const sgidClient = new SgidClient({
     process.env.NEXT_ENV !== "development"
       ? "https://sgid-nextjs-csr-demo.vercel.app/api/callback"
       : "http://localhost:3000/api/callback",
+  hostname: "https://api-stg.id.gov.sg",
 });
 
 export { sgidClient };
