@@ -1,5 +1,6 @@
 type Session = {
   state?: string;
+  codeVerifier?: string;
   nonce?: string;
   accessToken?: string;
   sgid?: string;
