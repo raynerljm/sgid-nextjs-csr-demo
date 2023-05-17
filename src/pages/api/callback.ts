@@ -33,7 +33,7 @@ export default async function handler(
 
   const { nonce, codeVerifier } = session;
 
-  const { accessToken } = await sgidClient.callback({
+  const { accessToken, sub } = await sgidClient.callback({
     code,
     nonce,
     codeVerifier,
@@ -42,6 +42,7 @@ export default async function handler(
   const newSession = {
     ...session,
     accessToken,
+    sub
   };
 
   store.set(sessionId, newSession);

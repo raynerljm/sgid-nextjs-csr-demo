@@ -18,17 +18,21 @@ export default async function handler(
 
   if (!session) {
     return res.status(400).send("Session not found");
-  } else if (!session.accessToken || typeof session.accessToken !== "string") {
+  } 
+
+  const { accessToken, sub } = session;
+  
+  if (!accessToken || typeof accessToken !== "string") {
     return res.status(400).send("Access token not in session");
+  } else if (!sub || typeof sub !== "string") {
+    return res.status(400).send("Sub not in session");
   }
 
-  const { accessToken } = session;
 
-  const { sub, data } = await sgidClient.userinfo({ accessToken });
+  const {  data } = await sgidClient.userinfo({ accessToken, sub });
 
   const newSession = {
     ...session,
-    sgid: sub,
     userInfo: data,
   };
   store.set(sessionId, newSession);

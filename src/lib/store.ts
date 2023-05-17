@@ -3,7 +3,7 @@ type Session = {
   codeVerifier?: string;
   nonce?: string;
   accessToken?: string;
-  sgid?: string;
+  sub?: string;
   userInfo?: Record<string, string>;
 };
 
