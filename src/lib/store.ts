@@ -20,11 +20,9 @@ let store: Map<string, Session>;
 if (process.env.NODE_ENV === "production") {
   store = new Map<string, Session>();
 } else {
-  // If the store does not exist, initialize it
-  if (!global.store) {
-    global.store = new Map<string, Session>();
-  }
-  store = global.store;
+  /**
+   * Initialize the store here
+   */
 }
 
 export { store };
