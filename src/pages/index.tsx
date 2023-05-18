@@ -26,6 +26,7 @@ const Home: NextPage = () => {
         <p className="font-light text-sm mb-2">
           This shows how you can keep state before and after login.
         </p>
+        {/* Selectors to select your ice cream flavour */}
         <div className="flex flex-col">
           {flavours.map((flavour) => (
             <div
@@ -40,6 +41,7 @@ const Home: NextPage = () => {
                 onChange={(e) => {
                   setState(e.target.value as IceCream);
                 }}
+                className="cursor-pointer"
                 title="flavour"
               />
               {flavour}
@@ -47,6 +49,7 @@ const Home: NextPage = () => {
           ))}
         </div>
 
+        {/* Login with Singpass button */}
         <Link
           prefetch={false}
           href={`/api/auth-url?state=${state}`}

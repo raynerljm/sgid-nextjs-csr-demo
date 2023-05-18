@@ -8,12 +8,14 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  // Retrieve the session ID from the browser cookies
   const sessionId = getCookie("sessionId", { req, res });
 
   if (typeof sessionId !== "string") {
     return res.status(400).send("Session ID not found in browser cookies");
   }
 
+  // Retrieve the access token and sub from the store
   const session = store.get(sessionId);
 
   if (!session) {
@@ -28,8 +30,10 @@ export default async function handler(
     return res.status(400).send("Sub not in session");
   }
 
+  // Request user info with access token
   const { data } = await sgidClient.userinfo({ accessToken, sub });
 
+  // Store the user info in the session
   const updatedSession = {
     ...session,
     userInfo: data,
@@ -38,5 +42,6 @@ export default async function handler(
 
   const { accessToken: _, nonce: __, ...dataToReturn } = updatedSession;
 
+  // Return user info, sub, and state
   res.json(dataToReturn);
 }

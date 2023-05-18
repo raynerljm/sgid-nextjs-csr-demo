@@ -13,6 +13,7 @@ const LoggedIn = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
+    //  Fetch user info
     const getUserInfo = async () => {
       try {
         setIsLoading(true);
