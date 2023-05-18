@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type UserInfoRes = {
-  sgid?: string;
+  sub?: string;
   userInfo?: Record<string, string>;
   state?: string;
 };
@@ -39,10 +39,10 @@ const LoggedIn = () => {
     return (
       <>
         <div className="text-xl mx-auto text-center mb-8">User Info</div>
-        {data?.sgid ? (
+        {data?.sub ? (
           <div className="w-full grid grid-cols-2 py-2 gap-4">
             <div className="w-full whitespace-nowrap">sgID</div>
-            <div className="w-full">{data.sgid}</div>
+            <div className="w-full">{data.sub}</div>
           </div>
         ) : null}
         {Object.entries(data?.userInfo ?? {}).map(([field, value]) => (
