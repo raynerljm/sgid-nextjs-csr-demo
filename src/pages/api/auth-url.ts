@@ -26,7 +26,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   store.set(sessionId, { codeVerifier, state, nonce });
 
   // Set the session ID in the browser cookies
-  setCookie("sessionId", sessionId, { req, res });
+  setCookie("sessionId", sessionId, { req, res, httpOnly: true, secure: true });
 
   // Redirect the browser to the authorization URL
   res.redirect(url);
