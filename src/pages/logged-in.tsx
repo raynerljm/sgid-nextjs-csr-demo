@@ -26,7 +26,9 @@ const LoggedIn = () => {
 
     return (
       <>
-        <div className="text-xl mx-auto text-center mb-8">User Info</div>
+        <div id="user-info" className="text-xl mx-auto text-center mb-8">
+          User Info
+        </div>
         {data?.sub ? (
           <div className="w-full grid grid-cols-2 py-2 gap-4">
             <div className="w-full whitespace-nowrap">sgID</div>

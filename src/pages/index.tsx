@@ -55,7 +55,10 @@ const Home: NextPage = () => {
           href={`/api/auth-url?state=${state}`}
           className="flex"
         >
-          <button className="py-2 px-4 font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 w-fit mx-auto mt-8">
+          <button
+            id="login-button"
+            className="py-2 px-4 font-medium bg-blue-600 text-white rounded-lg hover:bg-blue-700 w-fit mx-auto mt-8"
+          >
             Login with Singpass app
           </button>
         </Link>
