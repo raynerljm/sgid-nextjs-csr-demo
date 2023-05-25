@@ -1,5 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type UserInfoRes = {
   sub?: string;
@@ -8,26 +8,14 @@ type UserInfoRes = {
 };
 
 const LoggedIn = () => {
-  const [data, setData] = useState<UserInfoRes | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const getUserInfo = async () => {
+    const res = await fetch("/api/userinfo", { credentials: "include" });
+    return (await res.json()) as UserInfoRes;
+  };
 
-  useEffect(() => {
-    //  Fetch user info
-    const getUserInfo = async () => {
-      try {
-        setIsLoading(true);
-        const res = await fetch("/api/userinfo", { credentials: "include" });
-        const data = (await res.json()) as UserInfoRes;
-        setData(data);
-      } catch (error) {
-        setError(error instanceof Error ? error.message : String(error));
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    getUserInfo();
-  }, []);
+  const { isLoading, error, data } = useQuery<UserInfoRes>(["userinfo"], {
+    queryFn: getUserInfo,
+  });
 
   const renderContent = () => {
     if (isLoading) {
